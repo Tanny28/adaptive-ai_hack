@@ -1,10 +1,14 @@
 import streamlit as st
 import openai
-from gtts import gTTS
+from dotenv import load_dotenv
 import os
 
-# Replace with your actual OpenAI API key
-openai.api_key = "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"
+# Load environment variables from .env file (for local development)
+load_dotenv()
+
+# Set API key using Streamlit secrets or environment variables
+openai.api_key = st.secrets.get("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", os.getenv("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"))
+
 
 st.title("Adaptive AI Workspaces – MVP Prototype with TTS")
 
