@@ -1,7 +1,9 @@
 import streamlit as st
 import openai
 from dotenv import load_dotenv
+from gtts import gTTS
 import os
+
 
 load_dotenv()
 
