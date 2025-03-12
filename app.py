@@ -3,16 +3,14 @@ import openai
 from dotenv import load_dotenv
 import os
 
-# Load environment variables from .env file (for local development)
 load_dotenv()
 
-# Set API key using Streamlit secrets or environment variables
-openai.api_key = st.secrets.get("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", os.getenv("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"))
+openai.api_key = st.secrets["general"]["OPENAI_API_KEY"]
 
 
 st.title("Adaptive AI Workspaces – MVP Prototype with TTS")
 
-# Sidebar: Domain selection
+
 st.sidebar.header("Settings")
 domain = st.sidebar.selectbox("Select Domain", [
     "Personalized Learning", 
@@ -21,7 +19,6 @@ domain = st.sidebar.selectbox("Select Domain", [
     "Creative AI"
 ])
 
-# Main area: Module-specific input
 if domain == "Personalized Learning":
     st.header("Personalized Learning Module")
     st.write("Features: AI Tutor, Exam Prep, Text-to-Audio Summarization")
@@ -64,7 +61,7 @@ elif domain == "Creative AI":
 
 if st.button("Get Adaptive Response"):
     if query:
-        # Construct a domain- and feature-specific prompt
+    
         prompt = ""
         if domain == "Personalized Learning":
             if option == "AI Tutor":
@@ -109,7 +106,7 @@ if st.button("Get Adaptive Response"):
             st.subheader("Adaptive Response:")
             st.write(adaptive_response)
             
-            # Text-to-Speech Conversion using gTTS
+
             tts = gTTS(text=adaptive_response, lang='en')
             tts.save("response.mp3")
             audio_file = open("response.mp3", "rb")
