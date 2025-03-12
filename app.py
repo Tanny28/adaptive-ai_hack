@@ -10,7 +10,7 @@ load_dotenv()
 openai.api_key = st.secrets["general"]["OPENAI_API_KEY"]
 
 
-st.title("Adaptive AI Workspaces – MVP Prototype with TTS")
+st.title("Adaptive AI Workspaces –Prototype ")
 
 
 st.sidebar.header("Settings")
